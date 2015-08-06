@@ -1,0 +1,490 @@
+##############################################
+# # # # # # # # # COMMANDANTE # # # # # # # # 
+##############################################
+{
+
+
+Commandante v2.5 
+Code started 12/12/97 (as Ka v1.0)
+by Nick Kruchten
+(for Tournament 15, though he sucks and isn't complete by any means)
+
+email me at:
+            simnick@mail.bc.rogers.wave.ca
+
+or email the list at:
+            robowar@lists.stanford.edu
+
+
+    This code really dates back the old old old CyberHunters of T11, which were entered by myself and Adam Locke-Norton. They were fair dashers in their day, though the advent of the hopaside stole a bit from their glory (ie they didn't win). After re-downloading Robowar recently, I pulled out the Disassembler and look at CyberHunter 1's code. I was surprised to find it pretty current if missing a few things and rather sub-optimized. So, after endless hours watching him in combat, reprogramming and tweaking him in different forms and under different names, here is .... COMMANDANTE!
+
+    Optimized to the limits of my ability, with ideas from Turbo Melon, as well as other dashers, and with a group mode reminiscent of... MoveBot? Yup, that's what I did. Lazy me took out a copy of MoveBot and enhanced it a bit. Thanks again to our great and mighty RoboCreator for a) Creating the game and b) MoveBot ;). It won't win me a crown, but at least I finally entered a half-decent (at least I think so) Mortal entry. Enjoy. 
+
+    BTW, about code copying and the like, knock yourselves out, but remember, I used piles of stack preloading so study the code a bit before lifting it off, or you may find inexplicable stack underflows. I wouldn't mind it too much if you also mentioned where the code is from, but do whatever, I learned from others' code, so should anyone else reading this. The dasher-making community must pull together and defeat these vile conspiratorial AD's! Comments are in the code, explaining certain concepts and clarifying what goes on, for those of you who think my coding is really flaky or those of you who don't understand what happens in the code.
+
+
+}
+
+inthebeginningtheuniversewascreated:
+##Don't Panic!##
+robots 2 > MoveBot+ ifg
+
+
+##############################################
+# # # # # # # # # # # SOLO # # # # # # # # # #
+##############################################
+
+{
+    OK, this guy is a pretty straight-forward old dasher. It uses the kind of AD defense brought about by Merantes, but used by everyone nowadays. The original code came from CyberHunter 1, but it is now unrecognizable, apart from the label names, which none of you would know, seeing as I deleted the code. Sorry about that, I'm leaving in the code this time around.
+
+    Commandante borrows a little bit of code from Turbo Melon (Adam Locke-Norton), a few ideas from Code Blue (Prfnoff), and various other places, but very little was copied and pasted with no modification. I tried to use stack preloading as efficiently as possible so as to capitalize on my 50 steps per chronon, and I think I do pretty well in that respect. Commandante is rather bug-free, though he does a few things which tend to surprise me sometimes, maybe I'll track them down eventually.
+
+    The reason this robot is a dasher is because I really like this fighting style, and because it isn't as boring as coding defensive stuff. This guy can run around the arena, almost imprevious, because he teleports over shots in his leap. Similarly, his group round is also comprised of a passive defense, you won't find the word RADAR anywhere. Call me lazy, I do... ;)
+
+}
+
+inton
+Commandante:
+strike range' setint
+
+rotate: 
+##This is a normal 23 degree loop##
+   0 aim' sto   23 aim' sto   46 aim' sto 
+  69 aim' sto   92 aim' sto  115 aim' sto 
+ 138 aim' sto  161 aim' sto  184 aim' sto 
+ 207 aim' sto  230 aim' sto  253 aim' sto 
+ 276 aim' sto  299 aim' sto  322 aim' sto 
+ 345 aim' sto    8 aim' sto   31 aim' sto 
+  54 aim' sto   77 aim' sto  100 aim' sto 
+ 123 aim' sto  146 aim' sto  169 aim' sto 
+ 192 aim' sto  215 aim' sto  238 aim' sto 
+ 261 aim' sto  284 aim' sto  307 aim' sto
+ 330 aim' sto  353 aim' sto   16 aim' sto 
+  39 aim' sto   62 aim' sto   85 aim' sto 
+ 108 aim' sto  131 aim' sto  154 aim' sto 
+ 177 aim' sto  200 aim' sto  223 aim' sto 
+ 246 aim' sto  269 aim' sto  292 aim' sto 
+ 315 aim' sto  338 aim' sto    1 aim' sto 
+  24 aim' sto   47 aim' sto   70 aim' sto 
+  93 aim' sto  116 aim' sto  139 aim' sto 
+ 162 aim' sto  185 aim' sto  208 aim' sto 
+ 231 aim' sto  254 aim' sto  277 aim' sto
+ 300 aim' sto  323 aim' sto  346 aim' sto 
+   9 aim' sto   32 aim' sto   55 aim' sto 
+  78 aim' sto  101 aim' sto  124 aim' sto 
+ 147 aim' sto  170 aim' sto  193 aim' sto 
+ 216 aim' sto  239 aim' sto  262 aim' sto 
+ 285 aim' sto  308 aim' sto  331 aim' sto 
+ 354 aim' sto   17 aim' sto   40 aim' sto 
+  63 aim' sto   86 aim' sto  109 aim' sto 
+ 132 aim' sto  155 aim' sto  178 aim' sto 
+ 201 aim' sto  224 aim' sto  247 aim' sto
+ 270 aim' sto  293 aim' sto  316 aim' sto 
+ 339 aim' sto    2 aim' sto   25 aim' sto 
+  48 aim' sto   71 aim' sto   94 aim' sto 
+ 117 aim' sto  140 aim' sto  163 aim' sto 
+ 186 aim' sto  209 aim' sto  232 aim' sto
+ 255 aim' sto  278 aim' sto  301 aim' sto 
+ 324 aim' sto  347 aim' sto   10 aim' sto 
+  33 aim' sto   56 aim' sto   79 aim' sto 
+ 102 aim' sto  125 aim' sto  148 aim' sto 
+ 171 aim' sto  194 aim' sto  217 aim' sto
+ 240 aim' sto  263 aim' sto  286 aim' sto 
+ 309 aim' sto  332 aim' sto  355 aim' sto 
+  18 aim' sto   41 aim' sto   64 aim' sto 
+  87 aim' sto  110 aim' sto  133 aim' sto 
+ 156 aim' sto  179 aim' sto  202 aim' sto
+ 225 aim' sto  248 aim' sto  271 aim' sto 
+ 294 aim' sto  317 aim' sto  340 aim' sto 
+   3 aim' sto   26 aim' sto   49 aim' sto 
+  72 aim' sto   95 aim' sto  118 aim' sto 
+ 141 aim' sto  164 aim' sto  187 aim' sto
+ 210 aim' sto  233 aim' sto  256 aim' sto 
+ 279 aim' sto  302 aim' sto  325 aim' sto 
+ 348 aim' sto   11 aim' sto   34 aim' sto 
+  57 aim' sto   80 aim' sto  103 aim' sto 
+ 126 aim' sto  149 aim' sto  172 aim' sto
+ 195 aim' sto  218 aim' sto  241 aim' sto 
+ 264 aim' sto  287 aim' sto  310 aim' sto 
+ 333 aim' sto  356 aim' sto   19 aim' sto 
+  42 aim' sto   65 aim' sto   88 aim' sto 
+ 111 aim' sto  134 aim' sto  157 aim' sto
+ 180 aim' sto  203 aim' sto  226 aim' sto 
+ 249 aim' sto  272 aim' sto  295 aim' sto 
+ 318 aim' sto  341 aim' sto    4 aim' sto 
+  27 aim' sto   50 aim' sto   73 aim' sto 
+  96 aim' sto  119 aim' sto  142 aim' sto
+ 165 aim' sto  188 aim' sto  211 aim' sto 
+ 234 aim' sto  257 aim' sto  280 aim' sto 
+ 303 aim' sto  326 aim' sto  349 aim' sto 
+  12 aim' sto   35 aim' sto   58 aim' sto 
+  81 aim' sto  104 aim' sto  127 aim' sto
+ 150 aim' sto  173 aim' sto  196 aim' sto 
+ 219 aim' sto  242 aim' sto  265 aim' sto 
+ 288 aim' sto  311 aim' sto  334 aim' sto 
+ 357 aim' sto   20 aim' sto   43 aim' sto 
+  66 aim' sto   89 aim' sto  112 aim' sto
+ 135 aim' sto  158 aim' sto  181 aim' sto 
+ 204 aim' sto  227 aim' sto  250 aim' sto 
+ 273 aim' sto  296 aim' sto  319 aim' sto 
+ 342 aim' sto    5 aim' sto   28 aim' sto 
+  51 aim' sto   74 aim' sto   97 aim' sto
+ 120 aim' sto  143 aim' sto  166 aim' sto 
+ 189 aim' sto  212 aim' sto  235 aim' sto 
+ 258 aim' sto  281 aim' sto  304 aim' sto 
+ 327 aim' sto  350 aim' sto   13 aim' sto 
+  36 aim' sto   59 aim' sto   82 aim' sto
+ 105 aim' sto  128 aim' sto  151 aim' sto 
+ 174 aim' sto  197 aim' sto  220 aim' sto 
+ 243 aim' sto  266 aim' sto  289 aim' sto 
+ 312 aim' sto  335 aim' sto  358 aim' sto 
+  21 aim' sto   44 aim' sto   67 aim' sto
+  90 aim' sto  113 aim' sto  136 aim' sto 
+ 159 aim' sto  182 aim' sto  205 aim' sto 
+ 228 aim' sto  251 aim' sto  274 aim' sto 
+ 297 aim' sto  320 aim' sto  343 aim' sto 
+   6 aim' sto   29 aim' sto   52 aim' sto 
+  75 aim' sto   98 aim' sto  121 aim' sto
+ 144 aim' sto  167 aim' sto  190 aim' sto 
+ 213 aim' sto  236 aim' sto  259 aim' sto 
+ 282 aim' sto  305 aim' sto  328 aim' sto 
+ 351 aim' sto   14 aim' sto   37 aim' sto 
+  60 aim' sto   83 aim' sto  106 aim' sto 
+ 129 aim' sto  152 aim' sto  175 aim' sto
+ 198 aim' sto  221 aim' sto  244 aim' sto 
+ 267 aim' sto  290 aim' sto  313 aim' sto 
+ 336 aim' sto  359 aim' sto   22 aim' sto 
+  45 aim' sto   68 aim' sto   91 aim' sto 
+ 114 aim' sto  137 aim' sto  160 aim' sto
+ 183 aim' sto  206 aim' sto  229 aim' sto 
+ 252 aim' sto  275 aim' sto  298 aim' sto 
+ 321 aim' sto  344 aim' sto    7 aim' sto 
+  30 aim' sto   53 aim' sto   76 aim' sto 
+  99 aim' sto  122 aim' sto  145 aim' sto
+ 168 aim' sto  191 aim' sto  214 aim' sto 
+ 237 aim' sto  260 aim' sto  283 aim' sto 
+ 306 aim' sto  329 aim' sto  352 aim' sto 
+  15 aim' sto   38 aim' sto   61 aim' sto 
+  84 aim' sto  107 aim' sto  130 aim' sto 
+ 153 aim' sto  176 aim' sto  199 aim' sto
+ 222 aim' sto  245 aim' sto  268 aim' sto 
+ 291 aim' sto  314 aim' sto  337 aim' sto
+rotate rti
+
+strike: 
+##First evaluation and movement##
+aim
+range dup 112 < and hopnow ifg
+1 fire' sto
+dup 16 sin speedx' sto
+dup -16 cos speedy' sto
+dashedat range' setint
+55 range' setparam
+dup dup
+sync
+range dup dup 90 < and hop ifg
+loop sweep ifeg
+
+moving:  
+##Continuing the moving code##
+drop drop
+look + dup aim' sto
+0 look' sto
+dup 16 sin speedx' sto
+dup -16 cos speedy' sto
+dashedat range' setint
+55 range' setparam
+dup dup
+loop:
+sync     
+##This is the dash loop##
+range' recall dup dup 90 < and hop ifg
+loop ifg
+sweep:
+inton    
+##Check for dashers##
+-40 look' sto
+40 look' sto
+-80 look' sto
+80 look' sto
+-100 look' sto
+100 look' sto
+moving range' setint
+600 range' setparam  
+##Reset the interrupt##
+18 look' sto
+-18 look' sto
+16 look' sto
+-16 look' sto
+14 look' sto
+-14 look' sto
+12 look' sto
+-12 look' sto
+10 look' sto
+-10 look' sto
+8 look' sto
+-8 look' sto
+6 look' sto
+-6 look' sto
+4 look' sto
+-4 look' sto
+2 look' sto
+-2 look' sto
+0 look' sto
+
+speedx 3 / speedx' sto
+speedy 3 / speedy' sto
+
+dropall
+aim' recall dup
+rotate rti
+
+hopnow: 
+sync 
+##Close-up hop, have to sync up first##
+dup dup
+range' recall dup continue ifg
+dashed? rti
+continue:
+15 - dup 2 roll 
+sin movex' sto
+chs cos movey' sto
+4 hellbore' sto
+75 missile' sto
+icon5
+2 cos hopx ifg
+energy 200 + 2 /
+y' recall 150 > -2 * 1 + * movey' sto
+dropall
+600 range' setparam
+Commandante rti
+hopx:
+energy 200 + 2 /
+x' recall 150 > -2 * 1 + * movex' sto
+dropall
+600 range' setparam
+Commandante rti
+
+hop: 
+##Standard hop code##
+15 - dup 2 roll 
+sin movex' sto
+chs cos movey' sto
+4 hellbore' sto
+75 missile' sto
+icon5
+2 cos xjump ifg
+energy' recall 200 + 2 /
+y' recall 150 > -2 * 1 + * movey' sto
+dropall
+600 range' setparam
+Commandante rti
+xjump:
+energy' recall 200 + 2 /
+x' recall 150 > -2 * 1 + * movex' sto
+dropall
+600 range' setparam
+Commandante rti
+
+dashedat: 
+##Shoot and hop aside AD code##
+drop drop look' recall + dup dup
+aim' sto
+icon4
+90 missile' sto
+-25 sin movey' sto
+25 cos movex' sto
+0 speedx' sto
+0 speedy' sto
+look' recall aim' recall + aim' sto
+0 look' sto
+sync sync
+dropall
+600 range' setparam
+commandante rti
+
+dashed?:  
+##AD search loop for a failed close-up hop##
+closelydashedat range' setint
+67 range' setparam
+40 look' sto
+-40 look' sto
+80 look' sto
+-80 look' sto
+100 look' sto
+-100 look' sto
+16 look' sto
+-16 look' sto
+50 look' sto
+-50 look' sto
+60 look' sto
+-60 look' sto
+0 look' sto
+dropall
+600 range' setparam
+commandante rti
+
+closelydashedat: 
+##AD code for a failed close-up hop##
+drop swap look' recall + dup dup
+aim' sto
+icon4
+90 missile' sto
+-25 sin movey' sto
+25 cos movex' sto
+0 speedx' sto
+0 speedy' sto
+look' recall aim' recall + aim' sto
+0 look' sto
+sync sync
+dropall
+600 range' setparam
+commandante rti
+
+##############################################
+# # # # # # # # # # # GROUP # # # # # # # # # 
+##############################################
+
+{
+
+    Based on code from MoveBot (by David Harris, the RoboCreator) in the Robots folder from the distribution package. I basically took it and stuck in interrupts and stuck it in a group round and decided it worked badly but was easier to program than anything Jade-like (damn I love that bot!). So I worked on it a bit more and added in some hesitator concepts and a few other nasty things to scare away the wall-guys and some kill-shot stuff (which usually gets him killed). Finally, I built a group mode, yay!
+
+    The main "strategy" (or lack thereof) involved here is this: "maybe if I shoot a lot they'll leave me alone". This tends to work all right, scaring Jade clones. Magic Sword type bots will pound this guy, so I'm hoping luck will throw some Jade clones in with them to kill them before they kill me. Also, this guy hesitates a bit, so most shots JUST miss him. Unfortunately, if the shot is coming parallel to his movement, no way to evade it passively. This is the built-in flaw with hesitating wanderers.
+
+    BTW, Adam Locke-Norton GENEROUSLY contributed a little bit of code that is marked in this group section, if you can't figure out what it does, it basically gets my bot going in a direction not likely to have any bots in it. Works much better than always starting with 2 speedx and 2 speedy or something like that.
+
+}
+
+MoveBot+:  
+##Initialize all this junk##
+120 shield' store
+xmin left' setint                   
+ymin top' setint                    
+xmax right' setint            
+ymax bot' setint
+emergency wall' setint
+3 robots' setparam
+recharge robots' setint
+
+############################THIS NEXT BIT OF##
+                           #CODE DONATED BY:##
+count1 range' setint       #ADAM LOCKE-NORTON#
+rotate                     #Thanks Adam.######
+
+##This code moves me away from everyone##
+
+back:
+rti
+
+count1:
+aim a' sto
+count2 range' setint
+rti
+
+count2:
+aim dup a = back ifg
+b' sto
+count3 range' setint
+rti
+
+count3:
+aim dup dup
+a = back ifg
+b = back ifg
+c' sto
+count4 range' setint
+rti
+
+count4:
+aim dup dup dup
+a = back ifg
+b = back ifg
+c = back ifg
+a b c + + + 5 / 180 + dup
+5 sin speedx' sto
+-5 cos speedy' sto
+shoot   range' setint
+rti                  
+
+############################MY CODE AGAIN#####
+
+xmin:    
+##Bouncy code##
+0 shield' sto
+random 3 mod 2 + speedx' store
+energy shield' sto
+rti
+
+ymin:   
+##Bouncy code##
+0 shield' sto
+random 3 mod 2 + speedy' store
+energy shield' sto
+rti
+
+xmax:    
+##Bouncy code##
+0 shield' sto
+random 3 mod chs 2 - speedx' store
+energy shield' sto
+rti
+
+ymax:    
+##Bouncy code##
+0 shield' sto
+random 3 mod chs 2 - speedy' store
+energy shield' sto
+rti
+
+emergency: 
+##Wall code##
+icon3
+0 shield' sto
+speedx chs dup movex' sto
+speedy chs dup movey' sto
+speedy' sto
+speedx' sto
+energy shield' sto
+sync
+icon0
+dropall
+rotate rti
+
+shoot: 
+##Straight-forward, hesitator stuff##
+doppler -5 arctan aim + aim' sto
+range dup 40 < and closeup ifg
+energy 3 + missile' sto
+rti
+
+closeup: 
+##Killshot##
+20 shield' sto
+5 hell' sto
+75 missile' sto
+energy shield' sto
+sync
+rti
+
+recharge: 
+##Clunky transition to dasher mode##
+stop bot' setint
+stop top' setint
+stop right' setint
+stop left' setint
+-1 wall' setint
+flushint
+dropall
+rotate rti
+
+stop: 
+##Stop and fall asleep until you can dash##
+0 speedx' sto
+0 speedy' sto
+icon6
+chargeloop:
+energy 140 < chargeloop ifg
+sync
+Commandante rti
+
+##############################################

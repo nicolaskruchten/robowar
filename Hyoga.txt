@@ -1,0 +1,1905 @@
+##############################################
+#################### Hyoga ###################
+############### The Cygnus Saint #############
+##############################################
+
+{
+Hyoga v 2.3 (s2 g3):
+STARTED: a long time ago as Biohazard
+
+SOLO CODE (Holocron): 
+by NICK Kruchten, 16 at time of authorship
+
+GROUP CODE (A-ko):
+by ADAM Locke-Norton, 16 as well
+
+This is Hyoga, the final incarnation in theBiohazard/Shuriken/Holocron series. The original concept was of a moving and dodging pseudo-stunstreamer. The advantage of moving in towards the target is that they have less time to get out of the stun stream and that a stun stream can be halted more quickly if they move, without losing so much energy. as well, if you're moving closer, your killshot costs less. The hardware used seemed the best compromise between the group and solo requirements. Adam provided the groupround, VERY GENEROUSLY, I might add (thanks). You see, Adam also made a behavioural clone of Holocron (as it was then called) that was almost entered in this tourney. It was quite good, named A-ko, by the way. We watched Project A-ko and decided A-ko was a far cooler character than the moody B-ko. And the icons were readily available on the net. Back to hardware... The Holocron concept (tentatively named stun-runner by Adam and stun-dasher by myself) works best with 150 energy, yet only loses about 4% in my tests if i drop that to 100 in favour of 60 damage, which Adam required for A-ko's groupmode. I think this paradigm is rather different that conventional stunstreaming, if only in that it doesn't doppler lead and MOVES as opposed to sitting still. Stun dasher seems appropriate, because it borrows code from my dashers, and DOES somewhat dash the target. I toyed around with explosive bullets too by the way, as the energy cost is less thus extending the range of the stream, but dodging loses out when energy goes down. This bot's weakness is obviously long range and MACHINE GUNNERS. I hate those things. In proximity it emulates Arachnee's KILLER mode, rather well I might add.
+
+Cool things: I was forbidden to implement anti-glommer technology in this bot by Adam because he showed me his glommers before I had time to put it in, but he still does well against them by virtue of his bailout code (the bailout is my best shot at the previously popular technique of hopping aside after killshot-ing, which is now illegal) The more innovative things here are the  Anti Stun Streamer code. No acronyms here obviously. This bot stuns so enemy stun streams will be interrupted during combat, he checks if he's  been stunned using CHRONON register values at different times and basically fakes out current stun streamers. He manages to dodge BEHIND his own stun stream, a technique I attribute to Seguret in Retiarius and Bach Plus, which is really cool, but if you're moving in, causes there to be a slight blind spot, being the reason xbullet gunners plow him down. But anything with an active dodging system will suffer from his relentless attack. The last innovation in this bot is that I believe I was the first to develop the idea that the proper value for the last stunner in a stream is range 2/ stunner' sto (Adam uses this as well, but I thought up with it, BTW, 20 / works well for xbullets)
+
+Finally, the icon theme: I used to LOVE this anime series called Saint Seiya (or Les Chevaliers du Zodiac in France) and I copied some icons from the net, I dunno if that disqualifies me from the icon contest or what, seeing as I DID do lots of manipulation to make them look good in icon form  and I coded them in the right spots... Hyoga is the Cygnus Saint (Saints are guys with cool armours and superhuman powers) and thus holds the power of ice and freezes his enemies (hehe ;). He looks like the icon. Expect to see some more Saints in future tourneys (Shun, Ikki, Shiryu and Seiya) cuz the icons look really cool.
+
+And now I hand off the comment space to Adam for his take on things and his comments on the group code, but right before that, the legal stuff: anyone can do anything with this code as long as they mention me somewhere not near the bottom of the code. Imitation IS the greatest form of flattery, and I learned how to code and stuff from reverse engineering things too. But there should be better ways to do stuff than what I tried (this is not 
+true of some authors, like Lechat or Seguret, but I'm French too, so maybe I have the power like they do ;) Last note, the code is HEAVILY optimised and integrated with itself and reuses much of itself, so before you give up trying to figure it out, look over the rest of the code and see if that 
+helps... Adam, take it away
+
+}
+
+
+{
+This group mode is based on two things:
+        *if you dodge just one shot about 5 others will miss you
+        *if your proximity routine is unbeatable, you will get more points
+
+This group mode was originally intended for A-ko, my ill fated stun-runner that ran into problems with functional distinctness due to the nature of Nick's entry. A very bad version of A-ko, without any stun-runner code can be found on the hill under the name of Stupidist. It had a bad solo mode and a bad group mode. Well here is that same group mode with some patches and a change of hardware. It should do alright, at least better than the Three other groupmodes I gave Nick prior to this. So there you have it.
+-ALN
+}
+
+{
+PS by Nick: actually this is the third group mode in four that Adam gave me and it's the best of the four, all coded by him save for this solo transition which is mine.
+}
+
+############################################################################################
+
+inthebeginningtheuniversewascreated:
+#DON'T PANIC!
+robots 2 ! nickaddon ifg
+
+############################################################################################
+
+Holocron:
+firstsight range' setint
+dodge radar' setint
+20 radar' setparam 
+bounce wall' setint
+stopY top' setint
+stopY bot' setint
+stopX left' setint
+stopX right' setint
+rotate rti
+
+boot:
+firstsight 
+turnon:
+inton
+lookabit:
+range' setint
+4 look' sto
+-4 look' sto
+8 look' sto
+-8 look' sto
+12 look' sto
+-12 look' sto
+0 look' sto
+rotate:
+dropall
+   0 aim'   23 aim'   46 aim' 
+  69 aim'   92 aim'  115 aim' 
+ 138 aim'  161 aim'  184 aim' 
+ 207 aim'  230 aim'  253 aim' 
+ 276 aim'  299 aim'  322 aim'
+ 345 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+   8 aim'   31 aim' 
+  54 aim'   77 aim'  100 aim' 
+ 123 aim'  146 aim'  169 aim' 
+ 192 aim'  215 aim'  238 aim' 
+ 261 aim'  284 aim'  307 aim'  
+ 330 aim'  353 aim'  
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+  16 aim' 
+  39 aim'   62 aim'   85 aim' 
+ 108 aim'  131 aim'  154 aim' 
+ 177 aim'  200 aim'  223 aim' 
+ 246 aim'  269 aim'  292 aim'  
+ 315 aim'  338 aim'    1 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 
+  24 aim'   47 aim'   70 aim' 
+  93 aim'  116 aim'  139 aim' 
+ 162 aim'  185 aim'  208 aim' 
+ 231 aim'  254 aim'  277 aim'
+ 300 aim'  323 aim'  346 aim' 
+   9 aim'  
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 32 aim'   55 aim' 
+  78 aim'  101 aim'  124 aim' 
+ 147 aim'  170 aim'  193 aim' 
+ 216 aim'  239 aim'  262 aim'
+ 285 aim'  308 aim'  331 aim' 
+ 354 aim'   17 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+  40 aim' 
+  63 aim'   86 aim'  109 aim' 
+ 132 aim'  155 aim'  178 aim' 
+ 201 aim'  224 aim'  247 aim'
+ 270 aim'  293 aim'  316 aim' 
+ 339 aim'    2 aim'   25 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 
+  48 aim'   71 aim'   94 aim' 
+ 117 aim'  140 aim'  163 aim' 
+ 186 aim'  209 aim'  232 aim' 
+ 255 aim'  278 aim'  301 aim' 
+ 324 aim'  347 aim'   10 aim' 
+  33 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+  56 aim'   79 aim' 
+ 102 aim'  125 aim'  148 aim' 
+ 171 aim'  194 aim'  217 aim' 
+ 240 aim'  263 aim'  286 aim' 
+ 309 aim'  332 aim'  355 aim' 
+  18 aim'   41 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+  64 aim' 
+  87 aim'  110 aim'  133 aim' 
+ 156 aim'  179 aim'  202 aim' 
+ 225 aim'  248 aim'  271 aim' 
+ 294 aim'  317 aim'  340 aim' 
+   3 aim'   26 aim'   49 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+  72 aim'   95 aim'  118 aim' 
+ 141 aim'  164 aim'  187 aim' 
+ 210 aim'  233 aim'  256 aim' 
+ 279 aim'  302 aim'  325 aim' 
+ 348 aim'   11 aim'   34 aim' 
+  57 aim'  
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+  80 aim'  103 aim' 
+ 126 aim'  149 aim'  172 aim' 
+ 195 aim'  218 aim'  241 aim' 
+ 264 aim'  287 aim'  310 aim' 
+ 333 aim'  356 aim'   19 aim' 
+  42 aim'   65 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+  88 aim' 
+ 111 aim'  134 aim'  157 aim' 
+ 180 aim'  203 aim'  226 aim' 
+ 249 aim'  272 aim'  295 aim' 
+ 318 aim'  341 aim'    4 aim' 
+  27 aim'   50 aim'   73 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 
+  96 aim'  119 aim'  142 aim' 
+ 165 aim'  188 aim'  211 aim' 
+ 234 aim'  257 aim'  280 aim' 
+ 303 aim'  326 aim'  349 aim' 
+  12 aim'   35 aim'   58 aim' 
+  81 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 104 aim'  127 aim'  150 aim' 
+ 173 aim'  196 aim' 
+ 219 aim'  242 aim'  265 aim' 
+ 288 aim'  311 aim'  334 aim' 
+ 357 aim'   20 aim'   43 aim' 
+  66 aim'   89 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 112 aim'
+ 135 aim'  158 aim'  181 aim' 
+ 204 aim'  227 aim'  250 aim' 
+ 273 aim'  296 aim'  319 aim' 
+ 342 aim'    5 aim'   28 aim' 
+  51 aim'   74 aim'   97 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 120 aim'  143 aim'  166 aim' 
+ 189 aim'  212 aim'  235 aim' 
+ 258 aim'  281 aim'  304 aim' 
+ 327 aim'  350 aim'   13 aim' 
+  36 aim'   59 aim'   82 aim' 
+ 105 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 128 aim'  151 aim' 
+ 174 aim'  197 aim'  220 aim' 
+ 243 aim'  266 aim'  289 aim' 
+ 312 aim'  335 aim'  358 aim' 
+  21 aim'   44 aim'   67 aim' 
+  90 aim'  113 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 136 aim' 
+ 159 aim'  182 aim'  205 aim' 
+ 228 aim'  251 aim'  274 aim' 
+ 297 aim'  320 aim'  343 aim' 
+   6 aim'   29 aim'   52 aim' 
+  75 aim'   98 aim'  121 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 144 aim'  167 aim'  190 aim' 
+ 213 aim'  236 aim'  259 aim' 
+ 282 aim'  305 aim'  328 aim' 
+ 351 aim'   14 aim'   37 aim' 
+  60 aim'   83 aim'  106 aim' 
+ 129 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 152 aim'  175 aim' 
+ 198 aim'  221 aim'  244 aim' 
+ 267 aim'  290 aim'  313 aim' 
+ 336 aim'  359 aim'   22 aim' 
+  45 aim'   68 aim'   91 aim' 
+ 114 aim'  137 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 160 aim' 
+ 183 aim'  206 aim'  229 aim' 
+ 252 aim'  275 aim'  298 aim' 
+ 321 aim'  344 aim'    7 aim' 
+  30 aim'   53 aim'   76 aim' 
+  99 aim'  122 aim'  145 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+
+ 168 aim'  191 aim'  214 aim' 
+ 237 aim'  260 aim'  283 aim' 
+ 306 aim'  329 aim'  352 aim'
+  15 aim'   38 aim'   61 aim' 
+  84 aim'  107 aim'  130 aim' 
+ 153 aim' 
+sync
+sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+ 176 aim'  199 aim' 
+ 222 aim'  245 aim'  268 aim' 
+ 291 aim'  314 aim'  337 aim' 
+sync
+sto sto sto sto sto sto sto sto 
+rotate rti
+
+#@#@#@#@#@#@#@#@#
+
+firstsight:
+range dup 70 > tab ifg
+spiderprox ifg
+firstsight lookabit rti
+
+approach:
+icon0
+dropall
+range dup 60 < perimeter ifg
+tab:
+190 > longview ifg
+doppler -14 arctan aim + look + dup aim' sto
+0 look' sto
+dup 3 sin speedx' sto
+-3 cos speedy' sto
+energy 2 > wop10 ifg
+halt rti
+wop10: 
+4 stunner' sto
+chronon
+9
+stunloop:
+sync
+swap chronon - -2 < radar 21 < or dodge ifg
+chronon swap
+dup
+range dup cont ifg
+approach lookabit rti
+cont:
+> trigger if
+range 60 < percont ifg
+10 +
+energy 2 > wop8 ifg
+halt rti
+wop8: 
+4 stunner' sto
+stunloop jump
+
+#@#@#@#@#@#@#@#@#
+
+trigger:
+icon3
+doppler swap ifg
+energy 18 > bailout ifg
+30 missile' sto
+100 missile' sto
+range 2 / 4 + stunner' sto
+energy 200 + shield' sto
+-1 range' setint
+sync
+0 speedx' sto
+0 speedy' sto
+recharge jump
+
+bailout:
+18 stunner' sto
+sync
+dop lookabit
+energy 2 / 25 min
+aim dup 1000 cos 700 / bailx ifg
+baily:
+100 cos 0 > bailup ifg
+baildown:
+y 255 > bailupa ifg
+baildowna:
+30 min movey' sto sync rti
+
+bailup:
+y 45 < baildowna ifg
+bailupa:
+30 min chs movey' sto sync rti
+
+bailx:
+100 sin 0 > bailright ifg
+bailleft:
+x 45 < bailrighta ifg
+baillefta:
+30 min chs movex' sto sync rti
+
+bailright:
+x 255 > baillefta ifg
+bailrighta:
+30 min movex' sto sync rti
+
+#@#@#@#@#@#@#@#@#
+
+spiderprox:
+doppler -14 arctan look aim + aim' sto
+0 look' sto
+40 stunner' sto
+27 27
+spiderproxloop:
+sync
+icon5
+range > range and dop ifg
+40 scan' sto
+28 radar > radar and
+-40 scan' sto
+28 radar > radar and or hopaside ifg
+0 scan' sto
+dup 70 > boot ifg
+14 + dup
+spiderproxloop jump
+
+hopaside:
+firstsight
+lookabit 
+aim 100 cos 70 / jmpx ifg
+y 150 > -50 * 25 + movey' sto
+sync
+rti
+jmpx:
+x 150 > -50 * 25 + movex' sto
+sync
+rti
+
+proxkilln:
+range 70 > approach ifg
+proxkill:
+doppler -14 arctan look aim + + aim' sto
+0 look' sto
+proxkilla:
+icon4
+30 missile'
+100 missile'
+range 2 / 4 + stunner' sto sto sto
+energy 200 + shield' sto
+-1 range' setint
+sync
+0 look' sto
+recharge rti
+
+dop:
+doppler recharge ifg 
+look aim + aim' sto
+0 look' sto
+debug
+proxkilla jump
+
+perimeter:
+percont ifg
+approach lookabit rti
+percont:
+icon5
+energy 40 < proxkill ifg
+
+moveout:
+energy 2 / 20 min
+aim 100 cos 70 / mvex ifg
+y 150 > -2 * 1 + * movey' sto
+movedy jump
+mvex:
+x 150 > -2 * 1 + * movex' sto
+movedy:
+sync
+energy 50 > web ifg
+proxkilln lookabit rti
+
+web:
+0 speedy' sto
+0 speedx' sto
+spiderprox lookabit rti
+
+#@#@#@#@#@#@#@#@#
+
+longview:
+-1 range' setint
+look aim + dup aim' sto
+0 look' sto
+dup 3 sin speedx' sto
+-3 cos speedy' sto
+pseudodash:
+inton
+sync
+intoff
+range dup dup 180 < and approach ifg
+aim dup doppler -14 arctan + aim' sto
+chronon 3 mod 1 - stunner' sto
+aim' sto
+pseudodash ifg
+sweep:
+longview
+lookabit rti
+
+#@#@#@#@#@#@#@#@#
+
+dodge:
+dropall
+aim scan + 100 cos 70 / dodgeX ifg
+dodgeY:
+speedy 0 < dodgeUp ifg
+dodgeDown:
+y 260 > wallUp ifg
+20 movey' sto
+speedy 4 + speedy' sto
+4 shield' sto
+drift rti
+wallUp:
+-20 movey' sto
+-4 speedy' sto
+4 shield' sto
+drift rti
+
+dodgeUp:
+y 40 < wallDown ifg
+-20 movey' sto
+speedy 4 - speedy' sto
+4 shield' sto
+drift rti
+wallDown:
+20 movey' sto
+4 speedy' sto
+4 shield' sto
+drift rti
+
+dodgeX:
+speedx 0 < dodgeLeft ifg
+dodgeRight:
+x 260 > wallLeft ifg
+20 movex' sto
+4 speedx' sto
+4 shield' sto
+drift rti
+wallLeft:
+-20 movex' sto
+speedx 4 - speedx' sto
+4 shield' sto
+drift rti
+
+dodgeLeft:
+x 40 < wallRight ifg
+-20 movex' sto
+-4 speedx' sto
+4 shield' sto
+drift rti
+wallRight:
+20 movex' sto
+speedx 4 + speedx' sto
+4 shield' sto
+inton
+
+drift:
+-1 range' setint
+-1 radar' setint
+chronon
+sync 
+0 scan' sto
+chronon - -3 < go ifg
+sync sync
+go:
+dodge radar' setint
+approach range' setint
+rotate rti
+
+#@#@#@#@#@#@#@#@#
+
+recharge:
+-1 range' setint
+-1 radar' setint
+chargeloop:
+sync
+dropall
+inton intoff inton
+flushint
+approach range'
+dodge radar'
+600 range' 
+energy 23 < chargeloop ifg
+setparam setint setint
+rotate rti
+
+halt:
+icon0
+-1 range' setint
+dippetydo:
+sync
+dropall
+inton intoff inton
+40 scan' sto
+-40 scan' sto
+0 scan' sto
+flushint
+approach range'
+energy 23 < dippetydo ifg
+setint
+rotate rti
+
+routine:
+sto
+sync
+energy 3 > wop5 ifg
+recharge rti
+wop5:
+dropall
+dodge radar' setint
+approach range' setint
+rotate rti
+
+bounce:
+3 shield' sto
+speedy chs movey' sto
+speedx chs movex' sto
+0 speedy' sto
+0 speedx'
+routine jump
+
+stopY:
+0 speedy'
+routine jump
+
+stopX:
+0 speedx'
+routine jump
+
+##########################################################################################################################################
+
+soloa:
+robots 2 = solo ifg
+rti
+solo:
+dropall
+debug
+-1 dup dup dup dup
+bot' setint
+top' setint
+right' setint
+left' setint
+chronon' setint
+600 range' setparam
+inton intoff inton intoff
+holocron jump
+
+##########################################################################################################################################
+
+nickaddon:
+1000 chronon' setparam
+soloa chronon' setint
+solo robots' setint
+3 robots' setparam
+ako jump
+
+back:
+dropall
+rotate rti
+
+gox:
+x 150 < goleft goright ifeg
+
+goy:
+y 150 < goup godown ifeg
+
+ako:
+1 5 vstore
+1 11 vstore
+1 12 vstore
+x dup chs 300 + y < dr ifg
+ul:
+y < startleft startup ifeg
+dr:
+y < startdown startright ifeg
+
+##############################################
+##############################################
+#               RIGHT WALL ROUTINES
+#
+##############################################
+##############################################
+
+##############################################
+#      Seek Right Wall
+##############################################
+
+startright:
+x 277 > slowright ifg
+goy range' setint
+600 range' setparam
+inton
+84 aim' sto
+86 aim' sto
+88 aim' sto
+90 aim' sto
+92 aim' sto
+94 aim' sto
+96 aim' sto
+goright:
+280 right' setparam
+slowright right' setint
+x 230 < 4 * 4 + speedx' sto
+boom range' setint
+65 range' setparam
+rotate rti
+
+slowright:
+1 speedx' sto
+-1 radar' setint
+dropall
+x 285 > rightwall ifg
+289 right' setparam
+rightwall right' setint
+inton
+rotateright:
+180 aim' 192 aim' 204 aim' 216 aim' 228 aim' 240 aim' 252 aim' 264 aim' 276
+aim' 288 aim' 300 aim' 312 aim' 324 aim' 336 aim' 348 aim'
+0 aim'
+sync
+sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto
+rotateright rti
+
+##############################################
+#      At Right Wall
+##############################################
+
+rightwall:
+0 speedx' sto
+290 x - movex' sto
+dropall
+600 range' setparam
+rightshoot range' setint
+50 radar' setparam
+rightdodge radar' setint
+sync
+0 aim' sto
+1 fire' sto
+180 aim' sto
+1 fire' sto
+robots 3 < solo ifg
+rotateright rti
+
+##############################################
+#      See Enemy From Right Wall
+##############################################
+
+rightshoot:
+range dup 65 < and boom ifg
+range 100 < rightflee ifg
+energy 34 > rightshift ifg
+aim 0 = rightswitchY ifg
+aim 180 = rightswitchY ifg
+rti
+
+rightdodge:
+radar sync radar - vrecall doR ifg
+rti
+
+doR:
+aim 270 > aim not or dodgedownR ifg
+dodgeupR:
+radar 40 < hopup if
+slideupR jump
+dodgedownR:
+radar 40 < hopdown if
+slidedownR jump
+
+
+rightflee:
+aim 270 > aim not or rightseekBR rightseekTR ifeg
+
+
+
+
+{      Flee to the BR corner            }
+
+
+rightseekBR:
+y 270 > rightswitchY ifg
+280 bot' setparam
+slowdownBR bot' setint
+65 range' setparam
+boom range' setint
+7 speedy' sto
+dropall
+rotateright rti
+
+
+{      Flee to the TR corner            }
+
+
+rightseekTR:
+y 30 < rightswitchY ifg
+20 top' setparam
+slowupTR top' setint
+65 range' setparam
+boom range' setint
+-7 speedy' sto
+dropall
+rotateright rti
+
+##############################################
+#      Shoot Enemy From Right Wall
+##############################################
+
+rightshift:
+doppler -5 arctan aim + aim' sto
+25 missile' sto
+
+##############################################
+#      Shift Vertically On Right Wall
+##############################################
+
+y 30 < slowupTR ifg
+y 270 > slowdownBR ifg
+y 150 < slideupR ifg
+
+##############################################
+#      Shift Down
+##############################################
+
+slidedownR:
+y 270 > slowdownBR ifg
+y 80 + 280 min bot' setparam
+stopright bot' setint
+proximityright range' setint
+600 range' setparam
+4 speedy' sto
+-1 radar' setint
+dropall
+rotateright rti
+
+##############################################
+#      Shift Up
+##############################################
+
+slideupR:
+y 30 < slowupTR ifg
+y 80 - 20 max top' setparam
+stopright top' setint
+proximityright range' setint
+600 range' setparam
+-4 speedy' sto
+-1 radar' setint
+dropall
+rotateright rti
+
+##############################################
+#     Stop Shifting Vertically On Right Wall
+##############################################
+
+stopright:
+0 speedy' sto
+y 30 < slowupTR ifg
+y 270 > slowdownBR rightwall ifeg
+
+##############################################
+#      See Enemy While Shifting On Right Wall
+##############################################
+
+proximityright:
+range dup 65 < and boom ifg
+energy 15 > shoot ifg
+aim 180 = rightswitchY ifg
+aim 0 = rightswitchY ifg
+rti
+
+##############################################
+#      See Enemy Along Right Wall
+##############################################
+
+
+{      Switch to Bottom Wall                 }
+
+
+rightswitchY:
+65 range' setparam
+boom range' setint
+slowdown bot' setint
+280 bot' setparam
+slowup top' setint
+20 top' setparam
+20 left' setparam
+slowleft left' setint
+25 radar' setparam
+block radar' setint
+-7 speedx' sto
+rotate rti
+
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+
+block:
+energy shield' sto
+-1 radar' setint
+inton
+sync
+0 aim' sto
+30 aim' sto
+60 aim' sto
+90 aim' sto
+120 aim' sto
+150 aim' sto
+180 aim' sto
+210 aim' sto
+240 aim' sto
+270 aim' sto
+300 aim' sto
+330 aim' sto
+sync
+intoff
+block radar' setint
+60 range' setparam
+rti
+
+
+##############################################
+##############################################
+#               LEFT  WALL ROUTINES
+#
+##############################################
+##############################################
+
+##############################################
+#      Seek Left Wall
+##############################################
+
+startleft:
+x 23 < slowleft ifg
+goy range' setint
+600 range' setparam
+inton
+264 aim' sto
+266 aim' sto
+268 aim' sto
+270 aim' sto
+272 aim' sto
+274 aim' sto
+276 aim' sto
+goleft:
+20 left' setparam
+slowleft left' setint
+x 70 > -4 * -4 + speedx' sto
+boom range' setint
+65 range' setparam
+rotate rti
+
+slowleft:
+-1 speedx' sto
+-1 radar' setint
+dropall
+x 15 < leftwall ifg
+11 left' setparam
+leftwall left' setint
+inton
+rotateleft:
+0 aim' 12 aim' 24 aim' 36 aim' 48 aim' 60 aim' 72 aim' 84 aim' 96 aim' 108
+aim' 120 aim' 132 aim' 14 aim' 156 aim' 168 aim'
+180 aim'
+sync
+sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto
+rotateleft rti
+
+##############################################
+#      At Left Wall
+##############################################
+
+leftwall:
+0 speedx' sto
+10 x - movex' sto
+0 shield' sto
+dropall
+600 range' setparam
+leftshoot range' setint
+50 radar' setparam
+leftdodge radar' setint
+sync
+0 aim' sto
+1 fire' sto
+180 aim' sto
+1 fire' sto
+robots 3 < solo ifg
+rotateleft rti
+
+##############################################
+#      See Enemy From Left Wall
+##############################################
+
+leftshoot:
+range dup 65 < and boom ifg
+range 100 < leftflee ifg
+energy 34 > leftshift ifg
+aim 0 = leftswitchY ifg
+aim 180 = leftswitchY ifg
+rti
+
+leftdodge:
+radar sync radar - vrecall doL ifg
+rti
+
+doL:
+aim 90 < dodgedownL ifg
+dodgeupL:
+radar 40 < hopup if
+slideupL jump
+dodgedownL:
+radar 40 < hopdown if
+slidedownL jump
+
+
+leftflee:
+aim 90 < leftseekBL leftseekTL ifeg
+
+
+{      Flee to the BL corner            }
+
+
+leftseekBL:
+y 270 > leftswitchY ifg
+280 bot' setparam
+slowdownBL bot' setint
+65 range' setparam
+boom range' setint
+7 speedy' sto
+dropall
+rotateleft rti
+
+
+{      Flee to the TL corner            }
+
+
+leftseekTL:
+y 30 < leftswitchY ifg
+20 top' setparam
+slowupTL top' setint
+65 range' setparam
+boom range' setint
+-7 speedy' sto
+dropall
+rotateleft rti
+
+##############################################
+#      Shoot Enemy From Left Wall
+##############################################
+
+leftshift:
+doppler -5 arctan aim + aim' sto
+25 missile' sto
+
+##############################################
+#      Shift Vertically On Left Wall
+##############################################
+
+y 30 < slowupTL ifg
+y 270 > slowdownBL ifg
+y 150 < slideupL ifg
+
+##############################################
+#      Shift Down
+##############################################
+
+slidedownL:
+y 270 > slowdownBL ifg
+y 80 + 280 min bot' setparam
+stopleft bot' setint
+proximityleft range' setint
+600 range' setparam
+4 speedy' sto
+-1 radar' setint
+dropall
+rotateleft rti
+
+##############################################
+#      Shift Up
+##############################################
+
+slideupL:
+y 30 < slowupTL ifg
+y 80 - 20 max top' setparam
+stopleft top' setint
+proximityleft range' setint
+600 range' setparam
+-4 speedy' sto
+-1 radar' setint
+dropall
+rotateleft rti
+
+##############################################
+#     Stop Shifting Vertically On Left Wall
+##############################################
+
+stopleft:
+0 speedy' sto
+y 30 < slowupTL ifg
+y 270 > slowdownBL leftwall ifeg
+
+##############################################
+#      See Enemy While Shifting On Left Wall
+##############################################
+
+proximityleft:
+range dup 65 < and boom ifg
+energy 15 > shoot ifg
+aim 180 = leftswitchY ifg
+aim 0 = leftswitchY ifg
+rti
+
+##############################################
+#      See Enemy Along Left Wall
+##############################################
+
+leftswitchY:
+65 range' setparam
+boom range' setint
+slowdown bot' setint
+280 bot' setparam
+slowup top' setint
+20 top' setparam
+280 right' setparam
+slowright right' setint
+25 radar' setparam
+block radar' setint
+7 speedx' sto
+rotate rti
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+
+##############################################
+##############################################
+#              BOTTOM WALL ROUTINES
+#
+##############################################
+##############################################
+
+##############################################
+#      Seek Bottom Wall
+##############################################
+
+startdown:
+y 277 > slowdown ifg
+gox range' setint
+600 range' setparam
+inton
+174 aim' sto
+176 aim' sto
+178 aim' sto
+180 aim' sto
+182 aim' sto
+184 aim' sto
+186 aim' sto
+godown:
+280 bot' setparam
+slowdown bot' setint
+y 230 < 4 * 4 + speedy' sto
+boom range' setint
+65 range' setparam
+rotate rti
+
+slowdown:
+1 speedy' sto
+-1 radar' setint
+dropall
+y 285 > botwall ifg
+289 bot' setparam
+botwall bot' setint
+inton
+rotatedown:
+270 aim' 282 aim' 294 aim' 306 aim' 318 aim' 330 aim' 342 aim' 354 aim' 6
+aim' 18 aim' 30 aim' 42 aim' 54 aim' 66 aim' 78 aim'
+90 aim'
+sync
+sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto
+rotatedown rti
+
+##############################################
+#      At Bottom Wall
+##############################################
+
+botwall:
+0 speedy' sto
+290 y - movey' sto
+0 shield' sto
+dropall
+600 range' setparam
+downshoot range' setint
+50 radar' setparam
+botdodge radar' setint
+sync
+90 aim' sto
+1 fire' sto
+270 aim' sto
+1 fire' sto
+robots 3 < solo ifg
+rotatedown rti
+
+##############################################
+#      See Enemy From Bottom Wall
+##############################################
+
+downshoot:
+range dup 65 < and boom ifg
+range 100 < downflee ifg
+energy 34 > downshift ifg
+aim 270 = downswitchX ifg
+aim 90 = downswitchX ifg
+rti
+
+botdodge:
+radar sync radar - vrecall doB ifg
+rti
+
+doB:
+aim 180 > dodgerightB ifg
+dodgeleftB:
+radar 40 < hopleft if
+slideleftB jump
+dodgerightB:
+radar 40 < hopright if
+sliderightB jump
+
+downflee:
+aim 180 > downseekBR downseekBL ifeg
+
+
+{      Flee to the BR corner            }
+
+
+downseekBR:
+x 270 > downswitchX ifg
+280 right' setparam
+slowrightBR right' setint
+65 range' setparam
+boom range' setint
+7 speedx' sto
+dropall
+rotatedown rti
+
+
+{      Flee to the BL corner            }
+
+
+downseekBL:
+x 30 < downswitchX ifg
+20 left' setparam
+slowleftBL left' setint
+65 range' setparam
+boom range' setint
+-7 speedx' sto
+dropall
+rotatedown rti
+
+##############################################
+#      Shoot Enemy From Bottom Wall
+##############################################
+
+downshift:
+doppler -5 arctan aim + aim' sto
+25 missile' sto
+
+##############################################
+#      Shift Horizontally On Bottom Wall
+##############################################
+
+x 30 < slowleftBL ifg
+x 270 > slowrightBR ifg
+x 150 < slideleftB ifg
+
+##############################################
+#      Shift Right
+##############################################
+
+sliderightB:
+x 270 > slowrightBR ifg
+x 80 + 280 min right' setparam
+stopdown right' setint
+proximitydown range' setint
+600 range' setparam
+4 speedx' sto
+-1 radar' setint
+dropall
+rotatedown rti
+
+##############################################
+#      Shift Left
+##############################################
+
+slideleftB:
+x 30 < slowleftBL ifg
+x 80 - 20 max left' setparam
+stopdown left' setint
+proximitydown range' setint
+600 range' setparam
+-4 speedx' sto
+-1 radar' setint
+dropall
+rotatedown rti
+
+##############################################
+#    Stop Shifting Horizontally On Bottom Wall
+##############################################
+
+stopdown:
+0 speedx' sto
+x 30 < slowleftBL ifg
+x 270 > slowrightBR botwall ifeg
+
+##############################################
+#      See Enemy While Shifting On Bottom Wall
+##############################################
+
+proximitydown:
+range dup 65 < and boom ifg
+energy 15 > shoot ifg
+aim 90 = downswitchX ifg
+aim 270 = downswitchX ifg
+rti
+
+##############################################
+#      See Enemy Along Bottom Wall
+##############################################
+
+downswitchX:
+65 range' setparam
+boom range' setint
+slowright right' setint
+280 right' setparam
+slowleft left' setint
+20 left' setparam
+20 top' setparam
+slowup top' setint
+25 radar' setparam
+block radar' setint
+-7 speedy' sto
+rotate rti
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+
+
+##############################################
+##############################################
+#              TOP WALL ROUTINES
+#
+##############################################
+##############################################
+
+##############################################
+#      Seek Top Wall
+##############################################
+
+startup:
+y 23 < slowup ifg
+gox range' setint
+600 range' setparam
+inton
+354 aim' sto
+356 aim' sto
+358 aim' sto
+0 aim' sto
+2 aim' sto
+4 aim' sto
+6 aim' sto
+goup:
+20 top' setparam
+slowup top' setint
+y 70 > -4 * -4 + speedy' sto
+boom range' setint
+65 range' setparam
+rotate rti
+
+slowup:
+-1 speedy' sto
+-1 radar' setint
+dropall
+y 15 < topwall ifg
+11 top' setparam
+topwall top' setint
+inton
+rotateup:
+90 aim' 102 aim' 114 aim' 126 aim' 138 aim' 150 aim' 162 aim' 174 aim' 186
+aim' 198 aim' 210 aim' 222 aim' 234 aim' 246 aim' 258 aim'
+270 aim'
+sync
+sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto
+rotateup rti
+
+##############################################
+#      At Top Wall
+##############################################
+
+topwall:
+0 speedy' sto
+10 y - movey' sto
+0 shield' sto
+dropall
+600 range' setparam
+upshoot range' setint
+50 radar' setparam
+topdodge radar' setint
+sync
+90 aim' sto
+1 fire' sto
+270 aim' sto
+1 fire' sto
+robots 3 < solo ifg
+rotateup rti
+
+##############################################
+#      See Enemy From Top Wall
+##############################################
+
+upshoot:
+range dup 65 < and boom ifg
+range 100 < upflee ifg
+energy 34 > upshift ifg
+aim 270 = upswitchX ifg
+aim 90 = upswitchX ifg
+rti
+
+topdodge:
+radar sync radar - vrecall doT ifg
+rti
+
+doT:
+aim 180 > dodgerightT ifg
+dodgeleftT:
+radar 40 < hopleft if
+slideleftT jump
+dodgerightT:
+radar 40 < hopright if
+sliderightT jump
+
+
+upflee:
+aim 180 > upseekTR upseekTL ifeg
+
+
+{      Flee to the TR corner            }
+
+
+upseekTR:
+x 270 > upswitchX ifg
+280 right' setparam
+slowrightTR right' setint
+65 range' setparam
+boom range' setint
+7 speedx' sto
+dropall
+rotateup rti
+
+
+{      Flee to the TL corner            }
+
+
+upseekTL:
+x 30 < upswitchX ifg
+20 left' setparam
+slowleftTL left' setint
+65 range' setparam
+boom range' setint
+-7 speedx' sto
+dropall
+rotateup rti
+
+##############################################
+#      Shoot Enemy From Top Wall
+##############################################
+
+upshift:
+doppler -5 arctan aim + aim' sto
+25 missile' sto
+
+##############################################
+#      Shift Horizontally On Top Wall
+##############################################
+
+x 30 < slowleftTL ifg
+x 270 > slowrightTR ifg
+x 150 < slideleftT ifg
+
+##############################################
+#      Shift Right
+##############################################
+
+sliderightT:
+x 270 > slowrightTR ifg
+x 80 + 280 min right' setparam
+stopup right' setint
+proximityup range' setint
+600 range' setparam
+4 speedx' sto
+-1 radar' setint
+dropall
+rotateup rti
+
+##############################################
+#      Shift Left
+##############################################
+
+slideleftT:
+x 30 < slowleftTL ifg
+x 80 - 20 max left' setparam
+stopup left' setint
+proximityup range' setint
+600 range' setparam
+-4 speedx' sto
+-1 radar' setint
+dropall
+rotateup rti
+
+##############################################
+#    Stop Shifting Horizontally On Top Wall
+##############################################
+
+stopup:
+0 speedx' sto
+x 30 < slowleftTL ifg
+x 270 > slowrightTR topwall ifeg
+
+##############################################
+#      See Enemy While Shifting On Top Wall
+##############################################
+
+proximityup:
+range dup 65 < and boom ifg
+energy 15 > shoot ifg
+aim 90 = upswitchX ifg
+aim 270 = upswitchX ifg
+rti
+
+##############################################
+#      See Enemy Along Top Wall
+##############################################
+
+upswitchX:
+65 range' setparam
+boom range' setint
+slowright right' setint
+280 right' setparam
+slowleft left' setint
+20 left' setparam
+280 bot' setparam
+slowdown bot' setint
+25 radar' setparam
+block radar' setint
+7 speedy' sto
+rotate rti
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+
+##############################################
+##############################################
+#              TL CORNER ROUTINES
+#
+##############################################
+##############################################
+slowupTL:
+y 15 < TLcorner ifg
+-1 speedy' sto
+11 top' setparam
+TLcorner top' setint
+65 range' setparam
+boom range' setint
+rotateTL rti
+
+slowleftTL:
+x 15 < TLcorner ifg
+-1 speedx' sto
+11 left' setparam
+TLcorner left' setint
+65 range' setparam
+boom range' setint
+inton
+
+rotateTL:
+90 aim' 100 aim' 110 aim' 120 aim' 130 aim' 140 aim' 150 aim' 160 aim' 170
+aim' 180 aim'
+sync
+sto sto sto sto sto sto sto sto sto sto
+rotateTL rti
+
+##############################################
+#      At TL Corner
+##############################################
+
+TLcorner:
+0 speedx' sto
+0 speedy' sto
+10 y - movey' sto
+10 x - movex' sto
+dropall
+400 range' setparam
+TLshoot range' setint
+50 radar' setparam
+TLdodge radar' setint
+sync
+90 aim' sto
+1 fire' sto
+180 aim' sto
+1 fire' sto
+rotateTL rti
+
+##############################################
+#      See Enemy From TL Corner
+##############################################
+
+TLshoot:
+range 100 < TLflee ifg
+energy 15 > shootC ifg
+rti
+
+TLflee:
+aim 100 cos 70 / sliderightT slidedownL ifeg
+
+TLdodge:
+radar sync radar - vrecall doTL ifg
+rti
+
+doTL:
+aim 100 cos 70 / TLdodgeright ifg
+TLdodgedown:
+radar 40 < hopdown if
+-1 radar' setint
+slidedownL jump
+TLdodgeright:
+radar 40 < hopright if
+-1 radar' setint
+sliderightT jump
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+
+
+
+
+##############################################
+##############################################
+#              TR CORNER ROUTINES
+#
+##############################################
+##############################################
+slowupTR:
+y 15 < TRcorner ifg
+-1 speedy' sto
+11 top' setparam
+TRcorner top' setint
+65 range' setparam
+boom range' setint
+rotateTR rti
+
+slowrightTR:
+x 285 > TRcorner ifg
+1 speedx' sto
+289 right' setparam
+TRcorner right' setint
+65 range' setparam
+boom range' setint
+inton
+
+rotateTR:
+180 aim' 190 aim' 200 aim' 210 aim' 220 aim' 230 aim' 240 aim' 250 aim' 260
+aim' 270 aim'
+sync
+sto sto sto sto sto sto sto sto sto sto
+rotateTR rti
+
+##############################################
+#      At TR Corner
+##############################################
+
+TRcorner:
+0 speedx' sto
+0 speedy' sto
+10 y - movey' sto
+290 x - movex' sto
+dropall
+400 range' setparam
+TRshoot range' setint
+50 radar' setparam
+TRdodge radar' setint
+sync
+180 aim' sto
+1 fire' sto
+270 aim' sto
+1 fire' sto
+rotateTR rti
+
+##############################################
+#      See Enemy From TR Corner
+##############################################
+
+TRshoot:
+range 100 < TRflee ifg
+energy 15 > shootC ifg
+rti
+
+TRflee:
+aim 100 cos 70 / slideleftT slidedownR ifeg
+
+TRdodge:
+radar sync radar - vrecall doTR ifg
+rti
+
+doTR:
+aim 100 cos 70 / TRdodgeleft ifg
+TRdodgedown:
+radar 40 < hopdown if
+-1 radar' setint
+slidedownR jump
+TRdodgeleft:
+radar 40 < hopleft if
+-1 radar' setint
+slideleftT jump
+
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+
+
+##############################################
+##############################################
+#              BL CORNER ROUTINES
+#
+##############################################
+##############################################
+slowdownBL:
+y 285 > BLcorner ifg
+1 speedy' sto
+289 bot' setparam
+BLcorner bot' setint
+65 range' setparam
+boom range' setint
+rotateBL rti
+
+slowleftBL:
+x 15 < BLcorner ifg
+-1 speedx' sto
+11 left' setparam
+BLcorner left' setint
+65 range' setparam
+boom range' setint
+inton
+
+rotateBL:
+0 aim' 10 aim' 20 aim' 30 aim' 40 aim' 50 aim' 60 aim' 70 aim' 80 aim' 90 aim'
+sync
+sto sto sto sto sto sto sto sto sto sto
+rotateBL rti
+
+##############################################
+#      At BL Corner
+##############################################
+
+BLcorner:
+0 speedx' sto
+0 speedy' sto
+290 y - movey' sto
+10 x - movex' sto
+dropall
+400 range' setparam
+BLshoot range' setint
+50 radar' setparam
+BLdodge radar' setint
+sync
+0 aim' sto
+1 fire' sto
+90 aim' sto
+1 fire' sto
+rotateBL rti
+
+##############################################
+#      See Enemy From BL Corner
+##############################################
+
+BLshoot:
+range 100 < BLflee ifg
+energy 15 > shootC ifg
+rti
+
+BLflee:
+aim 100 cos 70 / sliderightB slideupL ifeg
+
+BLdodge:
+radar sync radar - vrecall doBL ifg
+rti
+
+doBL:
+aim 100 cos 70 / BLdodgeright ifg
+BLdodgeup:
+radar 40 < hopup if
+-1 radar' setint
+slideupL jump
+BLdodgeright:
+radar 40 < hopright if
+-1 radar' setint
+sliderightB jump
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+
+
+##############################################
+##############################################
+#              BR CORNER ROUTINES
+#
+##############################################
+##############################################
+
+slowdownBR:
+y 285 > BRcorner ifg
+1 speedy' sto
+289 bot' setparam
+BRcorner bot' setint
+65 range' setparam
+boom range' setint
+rotateBR rti
+
+slowrightBR:
+x 285 > BRcorner ifg
+1 speedx' sto
+289 right' setparam
+BRcorner right' setint
+65 range' setparam
+boom range' setint
+inton
+
+rotateBR:
+270 aim' 280 aim' 290 aim' 300 aim' 310 aim' 320 aim' 330 aim' 340 aim' 350
+aim' 0 aim'
+sync
+sto sto sto sto sto sto sto sto sto sto
+rotateBR rti
+
+##############################################
+#      At BR Corner
+##############################################
+
+BRcorner:
+0 speedx' sto
+0 speedy' sto
+290 y - movey' sto
+290 x - movex' sto
+dropall
+400 range' setparam
+BRshoot range' setint
+50 radar' setparam
+BRdodge radar' setint
+sync
+0 aim' sto
+1 fire' sto
+270 aim' sto
+1 fire' sto
+rotateBR rti
+
+##############################################
+#      See Enemy From BR Corner
+##############################################
+
+BRshoot:
+range 100 < BRflee ifg
+energy 15 > shootC ifg
+rti
+
+BRflee:
+aim 100 cos 70 / slideleftB slideupR ifeg
+
+BRdodge:
+radar sync radar - vrecall doBR ifg
+rti
+
+doBR:
+aim 100 cos 70 / BRdodgeleft ifg
+BRdodgeup:
+radar 40 < hopup if
+-1 radar' setint
+slideupR jump
+BRdodgeleft:
+radar 40 < hopleft if
+-1 radar' setint
+slideleftB jump
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+shoot:
+doppler -5 arctan aim + aim' sto
+10 missile' sto
+rti
+
+shootC:
+doppler -5 arctan aim + aim' sto
+10 missile' sto
+rti
+
+
+hopleft:
+-20 movex' sto
+return
+
+hopright:
+20 movex' sto
+return
+
+hopup:
+-20 movey' sto
+return
+
+hopdown:
+20 movey' sto
+return
+
+boom:
+doppler sync aim + aim' sto
+range kazam ifg
+rti
+kazam:
+doppler -14 arctan aim + aim' sto
+32 stunner' sto
+90 missile' sto
+sync
+rti
+
+#!!nostowarnings
+
+############################################################################################
