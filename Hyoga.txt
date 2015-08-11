@@ -13,14 +13,110 @@ by NICK Kruchten, 16 at time of authorship
 GROUP CODE (A-ko):
 by ADAM Locke-Norton, 16 as well
 
-This is Hyoga, the final incarnation in theBiohazard/Shuriken/Holocron series. The original concept was of a moving and dodging pseudo-stunstreamer. The advantage of moving in towards the target is that they have less time to get out of the stun stream and that a stun stream can be halted more quickly if they move, without losing so much energy. as well, if you're moving closer, your killshot costs less. The hardware used seemed the best compromise between the group and solo requirements. Adam provided the groupround, VERY GENEROUSLY, I might add (thanks). You see, Adam also made a behavioural clone of Holocron (as it was then called) that was almost entered in this tourney. It was quite good, named A-ko, by the way. We watched Project A-ko and decided A-ko was a far cooler character than the moody B-ko. And the icons were readily available on the net. Back to hardware... The Holocron concept (tentatively named stun-runner by Adam and stun-dasher by myself) works best with 150 energy, yet only loses about 4% in my tests if i drop that to 100 in favour of 60 damage, which Adam required for A-ko's groupmode. I think this paradigm is rather different that conventional stunstreaming, if only in that it doesn't doppler lead and MOVES as opposed to sitting still. Stun dasher seems appropriate, because it borrows code from my dashers, and DOES somewhat dash the target. I toyed around with explosive bullets too by the way, as the energy cost is less thus extending the range of the stream, but dodging loses out when energy goes down. This bot's weakness is obviously long range and MACHINE GUNNERS. I hate those things. In proximity it emulates Arachnee's KILLER mode, rather well I might add.
+This is Hyoga, the final incarnation in 
+theBiohazard/Shuriken/Holocron series. The 
+original concept was of a moving and dodging 
+pseudo-stunstreamer. The advantage of moving 
+in towards the target is that they have less 
+time to get out of the stun stream and that a 
+stun stream can be halted more quickly if 
+they move, without losing so much energy. as 
+well, if you're moving closer, your killshot 
+costs less. The hardware used seemed the best 
+compromise between the group and solo 
+requirements. Adam provided the groupround, 
+VERY GENEROUSLY, I might add (thanks). You 
+see, Adam also made a behavioural clone of 
+Holocron (as it was then called) that was 
+almost entered in this tourney. It was quite 
+good, named A-ko, by the way. We watched 
+Project A-ko and decided A-ko was a far 
+cooler character than the moody B-ko. And the 
+icons were readily available on the net. Back 
+to hardware... The Holocron concept 
+(tentatively named stun-runner by Adam and 
+stun-dasher by myself) works best with 150 
+energy, yet only loses about 4% in my tests 
+if i drop that to 100 in favour of 60 damage, 
+which Adam required for A-ko's groupmode. I 
+think this paradigm is rather different that 
+conventional stunstreaming, if only in that 
+it doesn't doppler lead and MOVES as opposed 
+to sitting still. Stun dasher seems 
+appropriate, because it borrows code from my 
+dashers, and DOES somewhat dash the target. I 
+toyed around with explosive bullets too by 
+the way, as the energy cost is less thus 
+extending the range of the stream, but 
+dodging loses out when energy goes down. This 
+bot's weakness is obviously long range and 
+MACHINE GUNNERS. I hate those things. In 
+proximity it emulates Arachnee's KILLER mode, 
+rather well I might add.
 
-Cool things: I was forbidden to implement anti-glommer technology in this bot by Adam because he showed me his glommers before I had time to put it in, but he still does well against them by virtue of his bailout code (the bailout is my best shot at the previously popular technique of hopping aside after killshot-ing, which is now illegal) The more innovative things here are the  Anti Stun Streamer code. No acronyms here obviously. This bot stuns so enemy stun streams will be interrupted during combat, he checks if he's  been stunned using CHRONON register values at different times and basically fakes out current stun streamers. He manages to dodge BEHIND his own stun stream, a technique I attribute to Seguret in Retiarius and Bach Plus, which is really cool, but if you're moving in, causes there to be a slight blind spot, being the reason xbullet gunners plow him down. But anything with an active dodging system will suffer from his relentless attack. The last innovation in this bot is that I believe I was the first to develop the idea that the proper value for the last stunner in a stream is range 2/ stunner' sto (Adam uses this as well, but I thought up with it, BTW, 20 / works well for xbullets)
+Cool things: I was forbidden to implement 
+anti-glommer technology in this bot by Adam 
+because he showed me his glommers before I 
+had time to put it in, but he still does well 
+against them by virtue of his bailout code 
+(the bailout is my best shot at the 
+previously popular technique of hopping aside 
+after killshot-ing, which is now illegal) The 
+more innovative things here are the  Anti 
+Stun Streamer code. No acronyms here 
+obviously. This bot stuns so enemy stun 
+streams will be interrupted during combat, he 
+checks if he's  been stunned using CHRONON 
+register values at different times and 
+basically fakes out current stun streamers. 
+He manages to dodge BEHIND his own stun 
+stream, a technique I attribute to Seguret in 
+Retiarius and Bach Plus, which is really 
+cool, but if you're moving in, causes there 
+to be a slight blind spot, being the reason 
+xbullet gunners plow him down. But anything 
+with an active dodging system will suffer 
+from his relentless attack. The last 
+innovation in this bot is that I believe I 
+was the first to develop the idea that the 
+proper value for the last stunner in a stream 
+is range 2/ stunner' sto (Adam uses this as 
+well, but I thought up with it, BTW, 20 / 
+works well for xbullets)
 
-Finally, the icon theme: I used to LOVE this anime series called Saint Seiya (or Les Chevaliers du Zodiac in France) and I copied some icons from the net, I dunno if that disqualifies me from the icon contest or what, seeing as I DID do lots of manipulation to make them look good in icon form  and I coded them in the right spots... Hyoga is the Cygnus Saint (Saints are guys with cool armours and superhuman powers) and thus holds the power of ice and freezes his enemies (hehe ;). He looks like the icon. Expect to see some more Saints in future tourneys (Shun, Ikki, Shiryu and Seiya) cuz the icons look really cool.
+Finally, the icon theme: I used to LOVE this 
+anime series called Saint Seiya (or Les 
+Chevaliers du Zodiac in France) and I copied 
+some icons from the net, I dunno if that 
+disqualifies me from the icon contest or 
+what, seeing as I DID do lots of manipulation 
+to make them look good in icon form  and I 
+coded them in the right spots... Hyoga is the 
+Cygnus Saint (Saints are guys with cool 
+armours and superhuman powers) and thus holds 
+the power of ice and freezes his enemies 
+(hehe ;). He looks like the icon. Expect to 
+see some more Saints in future tourneys 
+(Shun, Ikki, Shiryu and Seiya) cuz the icons 
+look really cool.
 
-And now I hand off the comment space to Adam for his take on things and his comments on the group code, but right before that, the legal stuff: anyone can do anything with this code as long as they mention me somewhere not near the bottom of the code. Imitation IS the greatest form of flattery, and I learned how to code and stuff from reverse engineering things too. But there should be better ways to do stuff than what I tried (this is not 
-true of some authors, like Lechat or Seguret, but I'm French too, so maybe I have the power like they do ;) Last note, the code is HEAVILY optimised and integrated with itself and reuses much of itself, so before you give up trying to figure it out, look over the rest of the code and see if that 
+And now I hand off the comment space to Adam 
+for his take on things and his comments on 
+the group code, but right before that, the 
+legal stuff: anyone can do anything with this 
+code as long as they mention me somewhere not 
+near the bottom of the code. Imitation IS the 
+greatest form of flattery, and I learned how 
+to code and stuff from reverse engineering 
+things too. But there should be better ways 
+to do stuff than what I tried (this is not 
+true of some authors, like Lechat or Seguret, 
+but I'm French too, so maybe I have the power 
+like they do ;) Last note, the code is 
+HEAVILY optimised and integrated with itself 
+and reuses much of itself, so before you give 
+up trying to figure it out, look over the 
+rest of the code and see if that 
 helps... Adam, take it away
 
 }
@@ -28,24 +124,42 @@ helps... Adam, take it away
 
 {
 This group mode is based on two things:
-        *if you dodge just one shot about 5 others will miss you
-        *if your proximity routine is unbeatable, you will get more points
+        *if you dodge just one shot about 5 
+others will miss you
+        *if your proximity routine is 
+unbeatable, you will get more points
 
-This group mode was originally intended for A-ko, my ill fated stun-runner that ran into problems with functional distinctness due to the nature of Nick's entry. A very bad version of A-ko, without any stun-runner code can be found on the hill under the name of Stupidist. It had a bad solo mode and a bad group mode. Well here is that same group mode with some patches and a change of hardware. It should do alright, at least better than the Three other groupmodes I gave Nick prior to this. So there you have it.
+This group mode was originally intended for 
+A-ko, my ill fated stun-runner that ran into 
+problems with functional distinctness due to 
+the nature of Nick's entry. A very bad 
+version of A-ko, without any stun-runner code 
+can be found on the hill under the name of 
+Stupidist. It had a bad solo mode and a bad 
+group mode. Well here is that same group mode 
+with some patches and a change of hardware. 
+It should do alright, at least better than 
+the Three other groupmodes I gave Nick prior 
+to this. So there you have it.
 -ALN
 }
 
 {
-PS by Nick: actually this is the third group mode in four that Adam gave me and it's the best of the four, all coded by him save for this solo transition which is mine.
+PS by Nick: actually this is the third group 
+mode in four that Adam gave me and it's the 
+best of the four, all coded by him save for 
+this solo transition which is mine.
 }
 
-############################################################################################
+##############################################
+##############################################
 
 inthebeginningtheuniversewascreated:
 #DON'T PANIC!
 robots 2 ! nickaddon ifg
 
-############################################################################################
+##############################################
+##############################################
 
 Holocron:
 firstsight range' setint
@@ -80,7 +194,8 @@ dropall
  276 aim'  299 aim'  322 aim'
  345 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
    8 aim'   31 aim' 
   54 aim'   77 aim'  100 aim' 
  123 aim'  146 aim'  169 aim' 
@@ -88,7 +203,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  261 aim'  284 aim'  307 aim'  
  330 aim'  353 aim'  
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
   16 aim' 
   39 aim'   62 aim'   85 aim' 
  108 aim'  131 aim'  154 aim' 
@@ -96,7 +212,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  246 aim'  269 aim'  292 aim'  
  315 aim'  338 aim'    1 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  
   24 aim'   47 aim'   70 aim' 
   93 aim'  116 aim'  139 aim' 
@@ -105,7 +222,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  300 aim'  323 aim'  346 aim' 
    9 aim'  
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  32 aim'   55 aim' 
   78 aim'  101 aim'  124 aim' 
  147 aim'  170 aim'  193 aim' 
@@ -113,7 +231,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  285 aim'  308 aim'  331 aim' 
  354 aim'   17 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
   40 aim' 
   63 aim'   86 aim'  109 aim' 
  132 aim'  155 aim'  178 aim' 
@@ -121,7 +240,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  270 aim'  293 aim'  316 aim' 
  339 aim'    2 aim'   25 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  
   48 aim'   71 aim'   94 aim' 
  117 aim'  140 aim'  163 aim' 
@@ -130,7 +250,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  324 aim'  347 aim'   10 aim' 
   33 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
   56 aim'   79 aim' 
  102 aim'  125 aim'  148 aim' 
  171 aim'  194 aim'  217 aim' 
@@ -138,7 +259,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  309 aim'  332 aim'  355 aim' 
   18 aim'   41 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
   64 aim' 
   87 aim'  110 aim'  133 aim' 
  156 aim'  179 aim'  202 aim' 
@@ -146,7 +268,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  294 aim'  317 aim'  340 aim' 
    3 aim'   26 aim'   49 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
   72 aim'   95 aim'  118 aim' 
  141 aim'  164 aim'  187 aim' 
  210 aim'  233 aim'  256 aim' 
@@ -154,7 +277,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  348 aim'   11 aim'   34 aim' 
   57 aim'  
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
   80 aim'  103 aim' 
  126 aim'  149 aim'  172 aim' 
  195 aim'  218 aim'  241 aim' 
@@ -162,7 +286,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  333 aim'  356 aim'   19 aim' 
   42 aim'   65 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
   88 aim' 
  111 aim'  134 aim'  157 aim' 
  180 aim'  203 aim'  226 aim' 
@@ -170,7 +295,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  318 aim'  341 aim'    4 aim' 
   27 aim'   50 aim'   73 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  
   96 aim'  119 aim'  142 aim' 
  165 aim'  188 aim'  211 aim' 
@@ -179,7 +305,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
   12 aim'   35 aim'   58 aim' 
   81 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  104 aim'  127 aim'  150 aim' 
  173 aim'  196 aim' 
  219 aim'  242 aim'  265 aim' 
@@ -187,7 +314,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  357 aim'   20 aim'   43 aim' 
   66 aim'   89 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  112 aim'
  135 aim'  158 aim'  181 aim' 
  204 aim'  227 aim'  250 aim' 
@@ -195,7 +323,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
  342 aim'    5 aim'   28 aim' 
   51 aim'   74 aim'   97 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  120 aim'  143 aim'  166 aim' 
  189 aim'  212 aim'  235 aim' 
  258 aim'  281 aim'  304 aim' 
@@ -203,7 +332,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
   36 aim'   59 aim'   82 aim' 
  105 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  128 aim'  151 aim' 
  174 aim'  197 aim'  220 aim' 
  243 aim'  266 aim'  289 aim' 
@@ -211,7 +341,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
   21 aim'   44 aim'   67 aim' 
   90 aim'  113 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  136 aim' 
  159 aim'  182 aim'  205 aim' 
  228 aim'  251 aim'  274 aim' 
@@ -219,7 +350,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
    6 aim'   29 aim'   52 aim' 
   75 aim'   98 aim'  121 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  144 aim'  167 aim'  190 aim' 
  213 aim'  236 aim'  259 aim' 
  282 aim'  305 aim'  328 aim' 
@@ -227,7 +359,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
   60 aim'   83 aim'  106 aim' 
  129 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  152 aim'  175 aim' 
  198 aim'  221 aim'  244 aim' 
  267 aim'  290 aim'  313 aim' 
@@ -235,7 +368,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
   45 aim'   68 aim'   91 aim' 
  114 aim'  137 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  160 aim' 
  183 aim'  206 aim'  229 aim' 
  252 aim'  275 aim'  298 aim' 
@@ -243,7 +377,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
   30 aim'   53 aim'   76 aim' 
   99 aim'  122 aim'  145 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
 
  168 aim'  191 aim'  214 aim' 
  237 aim'  260 aim'  283 aim' 
@@ -252,7 +387,8 @@ sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
   84 aim'  107 aim'  130 aim' 
  153 aim' 
 sync
-sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto sto
+sto sto sto sto sto sto sto sto sto sto sto 
+sto sto sto sto sto
  176 aim'  199 aim' 
  222 aim'  245 aim'  268 aim' 
  291 aim'  314 aim'  337 aim' 
@@ -576,7 +712,9 @@ stopX:
 0 speedx'
 routine jump
 
-##########################################################################################################################################
+##############################################
+##############################################
+##############################################
 
 soloa:
 robots 2 = solo ifg
@@ -594,7 +732,9 @@ chronon' setint
 inton intoff inton intoff
 holocron jump
 
-##########################################################################################################################################
+##############################################
+##############################################
+##############################################
 
 nickaddon:
 1000 chronon' setparam
@@ -663,8 +803,10 @@ x 285 > rightwall ifg
 rightwall right' setint
 inton
 rotateright:
-180 aim' 192 aim' 204 aim' 216 aim' 228 aim' 240 aim' 252 aim' 264 aim' 276
-aim' 288 aim' 300 aim' 312 aim' 324 aim' 336 aim' 348 aim'
+180 aim' 192 aim' 204 aim' 216 aim' 228 aim' 
+240 aim' 252 aim' 264 aim' 276
+aim' 288 aim' 300 aim' 312 aim' 324 aim' 336 
+aim' 348 aim'
 0 aim'
 sync
 sto sto sto sto sto sto sto sto
@@ -718,7 +860,8 @@ slidedownR jump
 
 
 rightflee:
-aim 270 > aim not or rightseekBR rightseekTR ifeg
+aim 270 > aim not or rightseekBR rightseekTR 
+ifeg
 
 
 
@@ -909,8 +1052,10 @@ x 15 < leftwall ifg
 leftwall left' setint
 inton
 rotateleft:
-0 aim' 12 aim' 24 aim' 36 aim' 48 aim' 60 aim' 72 aim' 84 aim' 96 aim' 108
-aim' 120 aim' 132 aim' 14 aim' 156 aim' 168 aim'
+0 aim' 12 aim' 24 aim' 36 aim' 48 aim' 60 
+aim' 72 aim' 84 aim' 96 aim' 108
+aim' 120 aim' 132 aim' 14 aim' 156 aim' 168 
+aim'
 180 aim'
 sync
 sto sto sto sto sto sto sto sto
@@ -1125,8 +1270,10 @@ y 285 > botwall ifg
 botwall bot' setint
 inton
 rotatedown:
-270 aim' 282 aim' 294 aim' 306 aim' 318 aim' 330 aim' 342 aim' 354 aim' 6
-aim' 18 aim' 30 aim' 42 aim' 54 aim' 66 aim' 78 aim'
+270 aim' 282 aim' 294 aim' 306 aim' 318 aim' 
+330 aim' 342 aim' 354 aim' 6
+aim' 18 aim' 30 aim' 42 aim' 54 aim' 66 aim' 
+78 aim'
 90 aim'
 sync
 sto sto sto sto sto sto sto sto
@@ -1341,8 +1488,10 @@ y 15 < topwall ifg
 topwall top' setint
 inton
 rotateup:
-90 aim' 102 aim' 114 aim' 126 aim' 138 aim' 150 aim' 162 aim' 174 aim' 186
-aim' 198 aim' 210 aim' 222 aim' 234 aim' 246 aim' 258 aim'
+90 aim' 102 aim' 114 aim' 126 aim' 138 aim' 
+150 aim' 162 aim' 174 aim' 186
+aim' 198 aim' 210 aim' 222 aim' 234 aim' 246 
+aim' 258 aim'
 270 aim'
 sync
 sto sto sto sto sto sto sto sto
@@ -1542,7 +1691,8 @@ boom range' setint
 inton
 
 rotateTL:
-90 aim' 100 aim' 110 aim' 120 aim' 130 aim' 140 aim' 150 aim' 160 aim' 170
+90 aim' 100 aim' 110 aim' 120 aim' 130 aim' 
+140 aim' 150 aim' 160 aim' 170
 aim' 180 aim'
 sync
 sto sto sto sto sto sto sto sto sto sto
@@ -1630,7 +1780,8 @@ boom range' setint
 inton
 
 rotateTR:
-180 aim' 190 aim' 200 aim' 210 aim' 220 aim' 230 aim' 240 aim' 250 aim' 260
+180 aim' 190 aim' 200 aim' 210 aim' 220 aim' 
+230 aim' 240 aim' 250 aim' 260
 aim' 270 aim'
 sync
 sto sto sto sto sto sto sto sto sto sto
@@ -1717,7 +1868,8 @@ boom range' setint
 inton
 
 rotateBL:
-0 aim' 10 aim' 20 aim' 30 aim' 40 aim' 50 aim' 60 aim' 70 aim' 80 aim' 90 aim'
+0 aim' 10 aim' 20 aim' 30 aim' 40 aim' 50 
+aim' 60 aim' 70 aim' 80 aim' 90 aim'
 sync
 sto sto sto sto sto sto sto sto sto sto
 rotateBL rti
@@ -1803,7 +1955,8 @@ boom range' setint
 inton
 
 rotateBR:
-270 aim' 280 aim' 290 aim' 300 aim' 310 aim' 320 aim' 330 aim' 340 aim' 350
+270 aim' 280 aim' 290 aim' 300 aim' 310 aim' 
+320 aim' 330 aim' 340 aim' 350
 aim' 0 aim'
 sync
 sto sto sto sto sto sto sto sto sto sto
@@ -1902,4 +2055,5 @@ rti
 
 #!!nostowarnings
 
-############################################################################################
+##############################################
+##############################################

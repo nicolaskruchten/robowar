@@ -7,7 +7,8 @@
 Commandante v2.5 
 Code started 12/12/97 (as Ka v1.0)
 by Nick Kruchten
-(for Tournament 15, though he sucks and isn't complete by any means)
+(for Tournament 15, though he sucks and isn't 
+complete by any means)
 
 email me at:
             simnick@mail.bc.rogers.wave.ca
@@ -16,11 +17,48 @@ or email the list at:
             robowar@lists.stanford.edu
 
 
-    This code really dates back the old old old CyberHunters of T11, which were entered by myself and Adam Locke-Norton. They were fair dashers in their day, though the advent of the hopaside stole a bit from their glory (ie they didn't win). After re-downloading Robowar recently, I pulled out the Disassembler and look at CyberHunter 1's code. I was surprised to find it pretty current if missing a few things and rather sub-optimized. So, after endless hours watching him in combat, reprogramming and tweaking him in different forms and under different names, here is .... COMMANDANTE!
+    This code really dates back the old old 
+old CyberHunters of T11, which were entered 
+by myself and Adam Locke-Norton. They were 
+fair dashers in their day, though the advent 
+of the hopaside stole a bit from their glory 
+(ie they didn't win). After re-downloading 
+Robowar recently, I pulled out the 
+Disassembler and look at CyberHunter 1's 
+code. I was surprised to find it pretty 
+current if missing a few things and rather 
+sub-optimized. So, after endless hours 
+watching him in combat, reprogramming and 
+tweaking him in different forms and under 
+different names, here is .... COMMANDANTE!
 
-    Optimized to the limits of my ability, with ideas from Turbo Melon, as well as other dashers, and with a group mode reminiscent of... MoveBot? Yup, that's what I did. Lazy me took out a copy of MoveBot and enhanced it a bit. Thanks again to our great and mighty RoboCreator for a) Creating the game and b) MoveBot ;). It won't win me a crown, but at least I finally entered a half-decent (at least I think so) Mortal entry. Enjoy. 
+    Optimized to the limits of my ability, 
+with ideas from Turbo Melon, as well as other 
+dashers, and with a group mode reminiscent 
+of... MoveBot? Yup, that's what I did. Lazy 
+me took out a copy of MoveBot and enhanced it 
+a bit. Thanks again to our great and mighty 
+RoboCreator for a) Creating the game and b) 
+MoveBot ;). It won't win me a crown, but at 
+least I finally entered a half-decent (at 
+least I think so) Mortal entry. Enjoy. 
 
-    BTW, about code copying and the like, knock yourselves out, but remember, I used piles of stack preloading so study the code a bit before lifting it off, or you may find inexplicable stack underflows. I wouldn't mind it too much if you also mentioned where the code is from, but do whatever, I learned from others' code, so should anyone else reading this. The dasher-making community must pull together and defeat these vile conspiratorial AD's! Comments are in the code, explaining certain concepts and clarifying what goes on, for those of you who think my coding is really flaky or those of you who don't understand what happens in the code.
+    BTW, about code copying and the like, 
+knock yourselves out, but remember, I used 
+piles of stack preloading so study the code a 
+bit before lifting it off, or you may find 
+inexplicable stack underflows. I wouldn't 
+mind it too much if you also mentioned where 
+the code is from, but do whatever, I learned 
+from others' code, so should anyone else 
+reading this. The dasher-making community 
+must pull together and defeat these vile 
+conspiratorial AD's! Comments are in the 
+code, explaining certain concepts and 
+clarifying what goes on, for those of you who 
+think my coding is really flaky or those of 
+you who don't understand what happens in the 
+code.
 
 
 }
@@ -35,11 +73,38 @@ robots 2 > MoveBot+ ifg
 ##############################################
 
 {
-    OK, this guy is a pretty straight-forward old dasher. It uses the kind of AD defense brought about by Merantes, but used by everyone nowadays. The original code came from CyberHunter 1, but it is now unrecognizable, apart from the label names, which none of you would know, seeing as I deleted the code. Sorry about that, I'm leaving in the code this time around.
+    OK, this guy is a pretty straight-forward 
+old dasher. It uses the kind of AD defense 
+brought about by Merantes, but used by 
+everyone nowadays. The original code came 
+from CyberHunter 1, but it is now 
+unrecognizable, apart from the label names, 
+which none of you would know, seeing as I 
+deleted the code. Sorry about that, I'm 
+leaving in the code this time around.
 
-    Commandante borrows a little bit of code from Turbo Melon (Adam Locke-Norton), a few ideas from Code Blue (Prfnoff), and various other places, but very little was copied and pasted with no modification. I tried to use stack preloading as efficiently as possible so as to capitalize on my 50 steps per chronon, and I think I do pretty well in that respect. Commandante is rather bug-free, though he does a few things which tend to surprise me sometimes, maybe I'll track them down eventually.
+    Commandante borrows a little bit of code 
+from Turbo Melon (Adam Locke-Norton), a few 
+ideas from Code Blue (Prfnoff), and various 
+other places, but very little was copied and 
+pasted with no modification. I tried to use 
+stack preloading as efficiently as possible 
+so as to capitalize on my 50 steps per 
+chronon, and I think I do pretty well in that 
+respect. Commandante is rather bug-free, 
+though he does a few things which tend to 
+surprise me sometimes, maybe I'll track them 
+down eventually.
 
-    The reason this robot is a dasher is because I really like this fighting style, and because it isn't as boring as coding defensive stuff. This guy can run around the arena, almost imprevious, because he teleports over shots in his leap. Similarly, his group round is also comprised of a passive defense, you won't find the word RADAR anywhere. Call me lazy, I do... ;)
+    The reason this robot is a dasher is 
+because I really like this fighting style, 
+and because it isn't as boring as coding 
+defensive stuff. This guy can run around the 
+arena, almost imprevious, because he 
+teleports over shots in his leap. Similarly, 
+his group round is also comprised of a 
+passive defense, you won't find the word 
+RADAR anywhere. Call me lazy, I do... ;)
 
 }
 
@@ -347,11 +412,40 @@ commandante rti
 
 {
 
-    Based on code from MoveBot (by David Harris, the RoboCreator) in the Robots folder from the distribution package. I basically took it and stuck in interrupts and stuck it in a group round and decided it worked badly but was easier to program than anything Jade-like (damn I love that bot!). So I worked on it a bit more and added in some hesitator concepts and a few other nasty things to scare away the wall-guys and some kill-shot stuff (which usually gets him killed). Finally, I built a group mode, yay!
+    Based on code from MoveBot (by David 
+Harris, the RoboCreator) in the Robots folder 
+from the distribution package. I basically 
+took it and stuck in interrupts and stuck it 
+in a group round and decided it worked badly 
+but was easier to program than anything 
+Jade-like (damn I love that bot!). So I 
+worked on it a bit more and added in some 
+hesitator concepts and a few other nasty 
+things to scare away the wall-guys and some 
+kill-shot stuff (which usually gets him 
+killed). Finally, I built a group mode, yay!
 
-    The main "strategy" (or lack thereof) involved here is this: "maybe if I shoot a lot they'll leave me alone". This tends to work all right, scaring Jade clones. Magic Sword type bots will pound this guy, so I'm hoping luck will throw some Jade clones in with them to kill them before they kill me. Also, this guy hesitates a bit, so most shots JUST miss him. Unfortunately, if the shot is coming parallel to his movement, no way to evade it passively. This is the built-in flaw with hesitating wanderers.
+    The main "strategy" (or lack thereof) 
+involved here is this: "maybe if I shoot a 
+lot they'll leave me alone". This tends to 
+work all right, scaring Jade clones. Magic 
+Sword type bots will pound this guy, so I'm 
+hoping luck will throw some Jade clones in 
+with them to kill them before they kill me. 
+Also, this guy hesitates a bit, so most shots 
+JUST miss him. Unfortunately, if the shot is 
+coming parallel to his movement, no way to 
+evade it passively. This is the built-in flaw 
+with hesitating wanderers.
 
-    BTW, Adam Locke-Norton GENEROUSLY contributed a little bit of code that is marked in this group section, if you can't figure out what it does, it basically gets my bot going in a direction not likely to have any bots in it. Works much better than always starting with 2 speedx and 2 speedy or something like that.
+    BTW, Adam Locke-Norton GENEROUSLY 
+contributed a little bit of code that is 
+marked in this group section, if you can't 
+figure out what it does, it basically gets my 
+bot going in a direction not likely to have 
+any bots in it. Works much better than always 
+starting with 2 speedx and 2 speedy or 
+something like that.
 
 }
 
